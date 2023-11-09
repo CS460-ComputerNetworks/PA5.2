@@ -1,21 +1,20 @@
 #ifndef CHAT_NODE_H
 #define CHAT_NODE_H
 
+// header files
+#include <stdlib.h>
+
 #define MAX_STR_LEN 128
+
 typedef struct ChatNode
    {
-      int ip;
+      unsigned ip:32; // Use exactly 4 bytes to represent the IP address
       int port;
-      char logicalName[ MAX_STR_LEN ];
+      char *logicalName;
       struct ChatNode *nextNode;
    } ChatNode;
 
-typedef enum { BAD_ARG_VAL = -1,
-               JOIN, // 0
-               LEAVE, // 1
-               NOTE, // 2
-               NOTE, // 3
-               SHUTDOWN, // 4
-               SHUTDOWN_ALL // 5
-               } ;
+// prototypes
+ChatNode createChatNodeLinkedList();
+
 #endif
