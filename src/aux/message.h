@@ -1,14 +1,5 @@
-#ifndef CHAT_NODE_H
-#define CHAT_NODE_H
-
-#define MAX_STR_LEN 128
-typedef struct ChatNode
-   {
-      int ip;
-      int port;
-      char logicalName[ MAX_STR_LEN ];
-      struct ChatNode *nextNode;
-   } ChatNode;
+#ifndef MESSAGE_H
+#define MESSAGE_H
 
 typedef enum { BAD_ARG_VAL = -1,
                JOIN, // 0
@@ -18,4 +9,5 @@ typedef enum { BAD_ARG_VAL = -1,
                SHUTDOWN, // 4
                SHUTDOWN_ALL // 5
                } ;
+               
 #endif
