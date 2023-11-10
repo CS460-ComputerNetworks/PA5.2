@@ -1,3 +1,6 @@
+#ifndef SENDER_HANDLER
+#define SENDER_HANDLER
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,4 +14,6 @@
 #define SERVER_IP "104.168.153.49"
 #define SERVER_PORT 25176 
 
-void *send_message(void *arg);
+void send_message(int sockfd, struct Message *message);
+
+#endif
