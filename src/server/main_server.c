@@ -57,8 +57,6 @@ int main(int argc, char** argv) {
         printf("\nServer with PID %d: accepted client\n", getpid());
 
         // create thread to handle the client's request
-        // note that this is a naive approach, i.e. there are race conditions
-        // for now this is okay, assuming low load
         pthread_t thread;
         
         
