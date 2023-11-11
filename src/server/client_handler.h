@@ -2,6 +2,7 @@
 #ifndef CLIENT_HANDLER_H
 #define CLIENT_HANDLER_H
 
+// function prototypes
 void talk_to_client(void *arg);
 int client_exists(int client_socket);
 void add_client(int client_socket);
