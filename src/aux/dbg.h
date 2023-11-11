@@ -5,7 +5,6 @@
 // Modified by Wolf-Dieter Otte
 //
 
-
 #ifndef DBG_H_INCLUDED
 #define DBG_H_INCLUDED
 
