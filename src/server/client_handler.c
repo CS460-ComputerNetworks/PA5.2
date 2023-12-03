@@ -7,7 +7,7 @@ void talk_to_client(void *arg)
 {
     // initialize variables
     int num_clients = 0;
-    
+
     // Extract client socket from arg
     int client_socket = *(int *)arg;
 
@@ -146,17 +146,55 @@ void talk_to_client(void *arg)
     void send_message(int message_type, int target_socket, char *message)
     {
         // Implementation to send a message using target_socket
+        int message_length = strlen(message);
+        if (send(target_socket, &message_type, sizeof(message_type), 0) == -1)
+        {
+            perror("Error sending message type");
+            return;
+        }
+        if (send(target_socket, &message_length, sizeof(message_length), 0) == -1)
+        {
+            perror("Error sending message length");
+            return;
+        }
+        if (send(target_socket, message, message_length, 0) == -1)
+        {
+            perror("Error sending message content");
+            return;
+        }
     }
 
     // Function to get the message type from the client
     int get_message_type(int client_socket)
     {
         // Implementation to receive and return the message type from client_socket
+        int message_type;
+        if (recv(client_socket, &message_type, sizeof(message_type), 0) == -1)
+        {
+            perror("Error receiving message type");
+            return -1;
+        }
+        return message_type;
     }
 
     // Function to get the message content from the client
     char *get_message(int client_socket)
     {
         // Implementation to receive and return the message content from client_socket
+        int message_length;
+        if (recv(client_socket, &message_length, sizeof(message_length), 0) == -1)
+        {
+            perror("Error receiving message length");
+            return NULL;
+        }
+        char *message = malloc(message_length + 1);
+        if (recv(client_socket, message, message_length, 0) == -1)
+        {
+            perror("Error receiving message content");
+            free(message);
+            return NULL;
+        }
+        message[message_length] = '\0';
+        return message;
     }
 }
