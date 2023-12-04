@@ -11,10 +11,11 @@
 #include <arpa/inet.h>
 #include "main_client.h"
 #include "sender_handler.h"
+#include "../aux/properties.h"
 
 #define SERVER_IP "104.168.153.49"
 #define SERVER_PORT 25176 
 
-void receive_message(struct Message *receivedMessage);
+void receive_message(struct Message *receivedMessage, Properties *properties);
 
 #endif

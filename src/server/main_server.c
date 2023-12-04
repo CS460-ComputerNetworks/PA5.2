@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
-#include "server.h"
+#include "main_server.h"
 #include "properties.h"
 #include "dbg.h"
 #define DBG;
